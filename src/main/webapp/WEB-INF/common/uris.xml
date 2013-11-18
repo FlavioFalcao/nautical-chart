@@ -19,7 +19,13 @@
             <componentPath>/</componentPath>
         </uris:turbine-uri>
 
+        <uris:turbine-uri id="uiLink" exposed="true" extends="server">
+            <componentPath>/</componentPath>
+        </uris:turbine-uri>
+
         <uris:turbine-content-uri id="app1Content" exposed="true" extends="app1Link" />
+
+        <uris:turbine-content-uri id="uiContent" exposed="true" extends="uiLink" />
 
     </services:uris>
 

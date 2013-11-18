@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context http://localhost:8080/schema/www.springframework.org/schema/context/spring-context.xsd
+       "
+       default-autowire="byName">
+
+    <!-- 将多个配置文件读取到容器中，交给Spring管理 -->  
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+           <list>
+              <value>classpath:configuration.properties</value>
+            </list>
+        </property>
+    </bean>
+       
+    <bean id="dataSource" class="nautical.chart.web.ui.data.DataSource">
+        <property name="location">
+            <value>${data.source}</value>
+        </property>
+    </bean>
+
+</beans>
