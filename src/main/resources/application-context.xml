@@ -18,7 +18,7 @@
         </property>
     </bean>
        
-    <bean id="dataSource" class="nautical.chart.web.ui.data.DataSource">
+    <bean id="projectSource" class="nautical.chart.web.ui.data.ProjectSource" init-method="init">
         <property name="location">
             <value>${data.source}</value>
         </property>

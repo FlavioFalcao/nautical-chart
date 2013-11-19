@@ -1,9 +1,8 @@
-$page.setTitle("It works.")
+$page.setTitle("Nautical Chart")
 
-<h1>It works.</h1>
-<h1>$location</h1>
 <ul>
 #foreach ($item in $location)
-  <li>$item</li>
+  #set($url = "$uiLink.setTarget('project/projectScreen.htm')")
+  <li><a href="$url">$item</a></li>
 #end
 </ul>
