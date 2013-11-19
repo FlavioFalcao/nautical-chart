@@ -24,4 +24,8 @@
         </property>
     </bean>
 
+    <bean id="versionSource" class="nautical.chart.web.ui.data.VersionSource" init-method="init">
+        <property name="projectSource" ref="projectSource" />
+    </bean>
+
 </beans>

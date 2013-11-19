@@ -1,0 +1,8 @@
+$page.setTitle("$projectName")
+
+<ul>
+#foreach ($version in $versions)
+  #set($url = "$uiLink.setTarget('version')" + "?name=$version")
+  <li><a href="$url">$version</a></li>
+#end
+</ul>
