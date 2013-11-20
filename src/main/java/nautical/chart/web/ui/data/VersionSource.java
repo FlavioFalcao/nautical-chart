@@ -16,9 +16,21 @@ public class VersionSource {
 		dataDir = projectSource.getDataDir();
 	}
 
-	public List<String> listVersions(final String projectName) {
+	public File getVersion(final String projectName, final String versionName) {
+		List<File> versions = listVersions(projectName);
+
+		for (File version : versions) {
+			if (version.getName().equalsIgnoreCase(versionName)) {
+				return version;
+			}
+		}
+
+		return null;
+	}
+
+	public List<File> listVersions(final String projectName) {
 		if (dataDir == null) {
-			return new ArrayList<String>();
+			return new ArrayList<File>();
 		} else {
 			File tmps[] = dataDir.listFiles(new FilenameFilter() {
 				@Override
@@ -30,18 +42,18 @@ public class VersionSource {
 
 			File project = tmps[0];
 			if (project.isDirectory()) {
-				List<String> result = new ArrayList<String>();
+				List<File> result = new ArrayList<File>();
 
 				tmps = project.listFiles();
 				for (File tmp : tmps) {
 					if (tmp.isDirectory()) {
-					    result.add(tmp.getName());
+						result.add(tmp);
 					}
 				}
 
 				return result;
 			} else {
-				return new ArrayList<String>();
+				return new ArrayList<File>();
 			}
 		}
 	}

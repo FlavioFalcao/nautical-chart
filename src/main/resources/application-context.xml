@@ -28,4 +28,12 @@
         <property name="projectSource" ref="projectSource" />
     </bean>
 
+    <bean id="issueSource" class="nautical.chart.web.ui.data.IssueSource">
+        <property name="versionSource" ref="versionSource" />
+    </bean>
+
+    <bean id="contentSource" class="nautical.chart.web.ui.data.ContentSource">
+        <property name="issueSource" ref="issueSource" />
+    </bean>
+
 </beans>

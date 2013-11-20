@@ -20,16 +20,16 @@ public class ProjectSource {
 		}
 	}
 
-	public List<String> listProjects() {
+	public List<File> listProjects() {
 		if (dataDir == null) {
-			return new ArrayList<String>();
+			return new ArrayList<File>();
 		} else {
-			List<String> result = new ArrayList<String>();
+			List<File> result = new ArrayList<File>();
 
 			File tmps[] = dataDir.listFiles();
 			for (File tmp : tmps) {
 				if (tmp.isDirectory()) {
-					result.add(tmp.getName());
+					result.add(tmp);
 				}
 			}
 

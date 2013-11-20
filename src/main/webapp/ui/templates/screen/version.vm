@@ -1,0 +1,8 @@
+$page.setTitle("$version")
+
+<ul>
+#foreach ($issue in $issues)
+  #set($url = "$uiLink.setTarget('ui/content')" + "?project=$project&version=$version&issue=$issue.getName()")
+  <li><a href="$url">$issue.getName()</a></li>
+#end
+</ul>
