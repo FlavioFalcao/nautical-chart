@@ -1,0 +1,20 @@
+$page.setTitle("ADD PROJECT")
+
+<form action="$uiLink" method="post">
+    $csrfToken.hiddenField
+    <input type="hidden" name="action" value="project_action"/>
+
+    #set ($group = $form.project.defaultInstance)
+
+    <p>Hello, what is the project's name?</p>
+
+    #if (!$group.name.valid)
+        <p>$group.name.message</p>
+    #end
+
+    <p>
+        <input type="text" name="$group.name.key" value="$!group.name.value"/>
+        <input type="submit" name="event_submit_do_add"/>
+    </p>
+
+</form>

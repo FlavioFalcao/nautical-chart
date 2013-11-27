@@ -1,12 +1,12 @@
 $page.setTitle("Nautical Chart")
 
-<h1>$uiLink</h1>
+<h1>$app1Link</h1>
 <ul>
 #foreach ($project in $projects)
-  #set($url = "$uiLink.setTarget('project')" + "?name=$project.getName()")
+  #set($url = "$app1Link.setTarget('project.htm').addQueryData('name', $project.getName())")
   <li><a href="$url">$project.getName()</a></li>
 #end
 </ul>
 
-  #set($addProjectUrl = "$uiLink.setTarget('addproject')")
+  #set($addProjectUrl = "$app1Link.setTarget('addproject')")
 <h1><a href="$addProjectUrl">新增项目</a></h1>

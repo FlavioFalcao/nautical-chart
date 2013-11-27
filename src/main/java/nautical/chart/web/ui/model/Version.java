@@ -7,4 +7,6 @@ package nautical.chart.web.ui.model;
  */
 public class Version {
 
+	// attributes
+	private String project;
 }

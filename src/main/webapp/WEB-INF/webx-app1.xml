@@ -28,6 +28,9 @@
     <!-- 表单验证。 -->
     <beans:import resource="app1/form.xml" />
 
+    <!-- 业务spring文件 -->
+    <beans:import resource="classpath*:application-context.xml" />
+
     <!-- 装载模块。 -->
     <services:module-loader>
         <ml-factories:class-modules>

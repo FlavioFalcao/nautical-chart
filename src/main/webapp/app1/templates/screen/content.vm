@@ -1,0 +1,11 @@
+$page.setTitle("$issue")
+
+<h1>$app1Link</h1>
+<h1>$content.getName()</h1>
+<h1>$content.getDescription()</h1>
+<h1>$content.getType().name()</h1>
+<h1>$content.getOriginator()</h1>
+<h1>$content.getOwner()</h1>
+#foreach ($issueContent in $content.getStatus())
+  <h1>$issueContent.name() $issueContent.getTime()</h1>
+#end

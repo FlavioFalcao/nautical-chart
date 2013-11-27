@@ -93,6 +93,22 @@ public class Issue {
 		this.status = status;
 	}
 
+	public String getProject() {
+		return project;
+	}
+
+	public void setProject(String project) {
+		this.project = project;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
 	// attributes
 	private String name;
 	private String description;
@@ -100,4 +116,6 @@ public class Issue {
 	private String originator;
 	private String owner;
 	private List<Status> status;
+	private String project;
+	private String version;
 }

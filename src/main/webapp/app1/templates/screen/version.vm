@@ -1,0 +1,9 @@
+$page.setTitle("$version")
+
+<h1>$app1Link</h1>
+<ul>
+#foreach ($issue in $issues)
+  #set($url = "$app1Link.setTarget('content').addQueryData('project', $project).addQueryData('version', $version).addQueryData('issue', $issue.getName())")
+  <li><a href="$url">$issue.getName()</a></li>
+#end
+</ul>

@@ -1,6 +1,7 @@
 $page.setTitle("It works.")
 
 <h1>It works.</h1>
+<h1>$app1Link</h1>
 
 <ol>
 <li>
