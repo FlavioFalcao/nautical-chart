@@ -1,5 +1,8 @@
 package nautical.chart.web.app1.module.action;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import nautical.chart.web.ui.data.ProjectSource;
 import nautical.chart.web.ui.model.Project;
 
 import com.alibaba.citrus.turbine.Navigator;
@@ -11,9 +14,11 @@ import com.alibaba.citrus.turbine.dataresolver.FormGroup;
  * @author Cheng Feng 2013-11-26 15:13:30
  */
 public class ProjectAction {
+	@Autowired
+	private ProjectSource projectSource;
+
     public void doAdd(@FormGroup("project") Project project, Navigator nav) {
-        String name = project.getName();
-        System.out.println(name);
-        nav.redirectTo("app1Link").withTarget("welcome").withParameter("name", name);
+    	boolean result = projectSource.addProject(project);
+        nav.redirectTo("app1Link").withTarget("index1").withParameter("name", String.valueOf(result));
     }
 }

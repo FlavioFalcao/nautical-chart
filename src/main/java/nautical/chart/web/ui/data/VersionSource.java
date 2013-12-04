@@ -5,6 +5,8 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 
+import nautical.chart.web.ui.model.Version;
+
 /**
  * 版本数据源
  * 
@@ -55,6 +57,18 @@ public class VersionSource {
 			} else {
 				return new ArrayList<File>();
 			}
+		}
+	}
+
+	public boolean addVersion(Version newVersion) {
+		File version = new File(dataDir.getAbsolutePath() + File.separator + newVersion.getProject() + File.separator + newVersion.getName());
+
+		if (version.exists() && version.isDirectory()) {
+			return true;
+		} else if (!version.exists()) {
+			return version.mkdirs();
+		} else {
+			return false;
 		}
 	}
 

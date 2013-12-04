@@ -7,3 +7,6 @@ $page.setTitle("$projectName")
   <li><a href="$url">$version.getName()</a></li>
 #end
 </ul>
+
+  #set($addVersionUrl = "$app1Link.setTarget('addVersion').addQueryData('project', $projectName)")
+<h1><a href="$addVersionUrl">新增版本</a></h1>

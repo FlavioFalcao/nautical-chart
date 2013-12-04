@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import nautical.chart.web.ui.model.Project;
+
 /**
  * 项目数据源
  * 
@@ -34,6 +36,24 @@ public class ProjectSource {
 			}
 
 			return result;
+		}
+	}
+
+	/**
+	 * 新增项目
+	 * 
+	 * @param projectName 项目名称
+	 * @return true: 新增项目成功; false: 新增项目失败
+	 */
+	public boolean addProject(Project newProject) {
+		File project = new File(location + newProject.getName());
+
+		if (project.exists() && project.isDirectory()) {
+			return true;
+		} else if (!project.exists()) {
+			return project.mkdirs();
+		} else {
+			return false;
 		}
 	}
 

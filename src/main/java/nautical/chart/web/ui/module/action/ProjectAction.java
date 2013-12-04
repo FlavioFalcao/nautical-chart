@@ -11,9 +11,9 @@ import com.alibaba.citrus.turbine.dataresolver.FormGroup;
  * @author Cheng Feng 2013-11-26 15:13:30
  */
 public class ProjectAction {
-    public void addProject(@FormGroup("project") Project project, Navigator nav) {
+    public void doAdd(@FormGroup("project") Project project, Navigator nav) {
         String name = project.getName();
         System.out.println(name);
-        nav.redirectTo("uiLink").withTarget("ui/project").withParameter("name", "nautical-chart");
+        nav.redirectTo("uiLink").withTarget("project").withParameter("name", "nautical-chart");
     }
 }

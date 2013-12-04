@@ -1,5 +1,6 @@
 $page.setTitle("$issue")
 
+<h1>$uiLink</h1>
 <h1>$content.getName()</h1>
 <h1>$content.getDescription()</h1>
 <h1>$content.getType().name()</h1>

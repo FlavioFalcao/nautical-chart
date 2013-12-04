@@ -3,7 +3,7 @@ $page.setTitle("Nautical Chart")
 <h1>$app1Link</h1>
 <ul>
 #foreach ($project in $projects)
-  #set($url = "$app1Link.setTarget('project.htm').addQueryData('name', $project.getName())")
+  #set($url = "$app1Link.setTarget('project').addQueryData('name', $project.getName())")
   <li><a href="$url">$project.getName()</a></li>
 #end
 </ul>

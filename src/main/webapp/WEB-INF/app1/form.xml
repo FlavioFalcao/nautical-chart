@@ -50,6 +50,18 @@
                 </fm-validators:required-validator>
             </field>
         </group>
+        <!--
+          - ===============================================
+          - project form
+          - ===============================================
+         -->
+        <group name="version" extends="csrfCheck">
+            <field name="name" displayName="版本号">
+                <fm-validators:required-validator>
+                    <message>必须填写版本号</message>
+                </fm-validators:required-validator>
+            </field>
+        </group>
     </services:form>
 
 </beans:beans>
