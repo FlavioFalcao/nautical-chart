@@ -1,8 +1,12 @@
 package nautical.chart.web.ui.data;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import nautical.chart.web.ui.model.Issue;
 
 /**
  * 需求数据源
@@ -33,6 +37,49 @@ public class IssueSource {
 			}
 
 			return result;
+		}
+	}
+
+	/**
+	 * 生成需求数据文件
+	 */
+	public boolean addIssue(Issue newIssue) {
+		File issue = new File(versionSource.getDataDir().getAbsolutePath() + File.separator + newIssue.getProject() + File.separator + newIssue.getVersion() + File.separator + newIssue.getName());
+
+		if (issue.exists() && issue.isFile()) {
+			return true;
+		} else if (!issue.exists()) {
+			FileWriter writer = null;
+
+			try {
+				boolean result = issue.createNewFile();
+
+				writer = new FileWriter(issue);
+				writer.write(newIssue.getDescription() + "\n");
+				writer.write(newIssue.getType().name() + "\n");
+				writer.write(newIssue.getOriginator() + "\n");
+				writer.write(newIssue.getOwner() + "\n");
+				Status s = Status.TODO;
+				s.setTime(System.currentTimeMillis());
+				List<Status> status = new ArrayList<Status>();
+				status.add(s);
+				writer.write(Issue.status2String(status));
+
+				return result;
+			} catch (IOException e) {
+				return false;
+			} finally {
+				if (writer != null) {
+					try {
+						writer.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		} else {
+			return false;
 		}
 	}
 

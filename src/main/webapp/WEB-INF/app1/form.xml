@@ -52,13 +52,40 @@
         </group>
         <!--
           - ===============================================
-          - project form
+          - version form
           - ===============================================
          -->
         <group name="version" extends="csrfCheck">
             <field name="name" displayName="版本号">
                 <fm-validators:required-validator>
                     <message>必须填写版本号</message>
+                </fm-validators:required-validator>
+            </field>
+        </group>
+        <!--
+          - ===============================================
+          - issue form
+          - ===============================================
+         -->
+        <group name="issue" extends="csrfCheck">
+            <field name="name" displayName="需求名称">
+                <fm-validators:required-validator>
+                    <message>必须填写需求名称</message>
+                </fm-validators:required-validator>
+            </field>
+            <field name="description" displayName="需求描述">
+                <fm-validators:required-validator>
+                    <message>必须填写需求描述</message>
+                </fm-validators:required-validator>
+            </field>
+            <field name="originator" displayName="需求发起人">
+                <fm-validators:required-validator>
+                    <message>必须填写需求发起人</message>
+                </fm-validators:required-validator>
+            </field>
+            <field name="owner" displayName="需求负责人">
+                <fm-validators:required-validator>
+                    <message>必须填写需求负责人</message>
                 </fm-validators:required-validator>
             </field>
         </group>

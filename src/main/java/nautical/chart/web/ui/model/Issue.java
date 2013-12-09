@@ -1,8 +1,8 @@
 package nautical.chart.web.ui.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import nautical.chart.web.ui.data.Status;
@@ -14,6 +14,10 @@ import nautical.chart.web.ui.utils.Transformer;
  * @author Cheng Feng 2013-11-17 22:59:30
  */
 public class Issue {
+	public void addStatus(Status status) {
+		this.status.add(status);
+	}
+
 	public static List<Status> string2Status(String content) {
 		List<Status> result = new ArrayList<Status>();
 
@@ -28,20 +32,20 @@ public class Issue {
 			}
 		}
 
-		Collections.sort(result, new Comparator<Status>() {
-			@Override
-			public int compare(Status s1, Status s2) {
-				if (s1.getTime() > s2.getTime()) {
-					return 1;
-				} else if (s1.getTime() < s2.getTime()) {
-					return -1;
-				} else {
-				    return 0;
-				}
-			}
-		});
-
 		return result;
+	}
+
+	public static String status2String(List<Status> status) {
+		StringBuilder sBuilder = new StringBuilder();
+
+		for (Status s : status) {
+			String prefix = DATA_FORMAT.format(new Date(s.getTime()));
+			String suffix = s.name();
+			sBuilder.append(":").append(prefix).append("-").append(suffix);
+			
+		}
+
+		return sBuilder.toString().substring(1);
 	}
 
 	// setter & getter
@@ -110,12 +114,13 @@ public class Issue {
 	}
 
 	// attributes
+	private static final SimpleDateFormat DATA_FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
 	private String name;
 	private String description;
 	private Type type;
 	private String originator;
 	private String owner;
-	private List<Status> status;
+	private List<Status> status = new ArrayList<Status>();
 	private String project;
 	private String version;
 }

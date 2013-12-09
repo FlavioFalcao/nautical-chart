@@ -7,3 +7,6 @@ $page.setTitle("$version")
   <li><a href="$url">$issue.getName()</a></li>
 #end
 </ul>
+
+  #set($addIssueUrl = "$app1Link.setTarget('addIssue').addQueryData('project', $project).addQueryData('version', $version)")
+<h1><a href="$addIssueUrl">新增需求</a></h1>

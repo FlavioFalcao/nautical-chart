@@ -77,6 +77,10 @@ public class VersionSource {
 		this.projectSource = projectSource;
 	}
 
+	public File getDataDir() {
+		return dataDir;
+	}
+
 	// attributes
 	private ProjectSource projectSource;
 	private File dataDir;
