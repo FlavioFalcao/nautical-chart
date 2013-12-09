@@ -19,10 +19,10 @@ public class Project {
 	private VersionSource versionSource;
 
 	public void execute(Context context) {
-		String projectName = request.getParameter("name");
-		context.put("projectName", projectName);
+		String project = request.getParameter("name");
+		context.put("project", project);
 
-		List<File> versions = versionSource.listVersions(projectName);
+		List<File> versions = versionSource.listVersions(project);
 		context.put("versions", versions);
 	}
 }

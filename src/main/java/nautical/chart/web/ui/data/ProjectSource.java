@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nautical.chart.web.ui.model.Project;
+import nautical.chart.web.ui.utils.FileHelper;
 
 /**
  * 项目数据源
@@ -54,6 +55,16 @@ public class ProjectSource {
 			return project.mkdirs();
 		} else {
 			return false;
+		}
+	}
+
+	public boolean delProject(Project oldProject) {
+		File project = new File(dataDir.getAbsolutePath() + File.separator + oldProject.getName());
+
+		if (project.exists()) {
+		    return FileHelper.delFile(project);
+		} else {
+			return true;
 		}
 	}
 

@@ -83,6 +83,16 @@ public class IssueSource {
 		}
 	}
 
+	public boolean delIssue(Issue oldIssu) {
+		File issue = new File(versionSource.getDataDir().getAbsolutePath() + File.separator + oldIssu.getProject() + File.separator + oldIssu.getVersion() + File.separator + oldIssu.getName());
+
+		if (issue.exists()) {
+			return issue.delete();
+		} else {
+			return false;
+		}
+	}
+
 	// setter
 	public void setVersionSource(VersionSource versionSource) {
 		this.versionSource = versionSource;

@@ -8,5 +8,14 @@ $page.setTitle("$version")
 #end
 </ul>
 
-  #set($addIssueUrl = "$app1Link.setTarget('addIssue').addQueryData('project', $project).addQueryData('version', $version)")
+#set($addIssueUrl = "$app1Link.setTarget('addIssue').addQueryData('project', $project).addQueryData('version', $version)")
 <h1><a href="$addIssueUrl">新增需求</a></h1>
+
+<form action="$app1Link" method="post">
+    $csrfToken.hiddenField
+    <input type="hidden" name="action" value="VersionAction"/>
+    <input type="hidden" name="project" value="$project"/>
+    <input type="hidden" name="version" value="$version"/>
+
+    <input type="submit" name="event_submit_do_del" value="删除" />
+</form>

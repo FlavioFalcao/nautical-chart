@@ -30,4 +30,13 @@ public class IssueAction {
 		boolean result = issueSource.addIssue(issue);
 		nav.redirectTo("app1Link").withTarget("version").withParameter("project", project).withParameter("version", version);
 	}
+
+	public void doDel(@Param("project") String project, @Param("version") String version, @Param("issue") String issue, Navigator nav) {
+		Issue oldIssue = new Issue();
+		oldIssue.setName(issue);
+		oldIssue.setProject(project);
+		oldIssue.setVersion(version);
+		boolean result = issueSource.delIssue(oldIssue);
+		nav.redirectTo("app1Link").withTarget("version").withParameter("project", project).withParameter("version", version);
+	}
 }

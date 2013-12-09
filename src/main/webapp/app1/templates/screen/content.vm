@@ -9,3 +9,13 @@ $page.setTitle("$issue")
 #foreach ($issueContent in $content.getStatus())
   <h1>$issueContent.name() $issueContent.getTime()</h1>
 #end
+
+<form action="$app1Link" method="post">
+    $csrfToken.hiddenField
+    <input type="hidden" name="action" value="IssueAction"/>
+    <input type="hidden" name="project" value="$project"/>
+    <input type="hidden" name="version" value="$version"/>
+    <input type="hidden" name="issue" value="$issue" />
+
+    <input type="submit" name="event_submit_do_del" value="删除" />
+</form>

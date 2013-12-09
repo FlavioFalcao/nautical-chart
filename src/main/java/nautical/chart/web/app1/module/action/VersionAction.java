@@ -23,4 +23,12 @@ public class VersionAction {
 		boolean result = versionSource.addVersion(version);
 		nav.redirectTo("app1Link").withTarget("project").withParameter("name", project);
 	}
+
+	public void doDel(@Param("project") String project, @Param("version") String version, Navigator nav) {
+		Version oldVersion = new Version();
+		oldVersion.setName(version);
+		oldVersion.setProject(project);
+		boolean result = versionSource.delVersion(oldVersion);
+		nav.redirectTo("app1Link").withTarget("project").withParameter("name", project);
+	}
 }

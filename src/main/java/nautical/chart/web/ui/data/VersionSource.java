@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nautical.chart.web.ui.model.Version;
+import nautical.chart.web.ui.utils.FileHelper;
 
 /**
  * 版本数据源
@@ -69,6 +70,19 @@ public class VersionSource {
 			return version.mkdirs();
 		} else {
 			return false;
+		}
+	}
+
+	/**
+	 * 删除指定的版本，版本内的需求一并删除
+	 */
+	public boolean delVersion(Version oldVersion) {
+		File version = new File(dataDir.getAbsolutePath() + File.separator + oldVersion.getProject() + File.separator + oldVersion.getName());
+
+		if (version.exists()) {
+		    return FileHelper.delFile(version);
+		} else {
+			return true;
 		}
 	}
 
