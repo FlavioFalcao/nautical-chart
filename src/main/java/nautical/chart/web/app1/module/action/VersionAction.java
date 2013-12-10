@@ -1,5 +1,6 @@
 package nautical.chart.web.app1.module.action;
 
+import nautical.chart.web.ui.data.IssueSource;
 import nautical.chart.web.ui.data.VersionSource;
 import nautical.chart.web.ui.model.Version;
 
@@ -17,6 +18,8 @@ import com.alibaba.citrus.turbine.dataresolver.Param;
 public class VersionAction {
 	@Autowired
 	private VersionSource versionSource;
+	@Autowired
+	private IssueSource issueSource;
 
 	public void doAdd(@Param("project") String project, @FormGroup("version") Version version, Navigator nav) {
 		version.setProject(project);
@@ -29,6 +32,19 @@ public class VersionAction {
 		oldVersion.setName(version);
 		oldVersion.setProject(project);
 		boolean result = versionSource.delVersion(oldVersion);
+		nav.redirectTo("app1Link").withTarget("project").withParameter("name", project);
+	}
+
+	public void doUpdate(@Param("project") String project, @Param("oldVersion") String oldVersionName, @Param("newVersion") String newVersionName, Navigator nav) {
+		Version oldVersion = new Version();
+		oldVersion.setName(oldVersionName);
+		oldVersion.setProject(project);
+
+		Version newVersion = new Version();
+		newVersion.setName(newVersionName);
+		newVersion.setProject(project);
+
+		boolean result = issueSource.updateVersion(oldVersion, newVersion);
 		nav.redirectTo("app1Link").withTarget("project").withParameter("name", project);
 	}
 }

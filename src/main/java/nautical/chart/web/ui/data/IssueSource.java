@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nautical.chart.web.ui.model.Issue;
+import nautical.chart.web.ui.model.Version;
 
 /**
  * 需求数据源
@@ -91,6 +92,14 @@ public class IssueSource {
 		} else {
 			return false;
 		}
+	}
+
+	public boolean updateVersion(Version oldVersion, Version newVersion) {
+		File oldVersionF = versionSource.getVersion(oldVersion.getProject(), oldVersion.getName());
+		File newVersionF = new File(oldVersionF.getParent() + File.separator + newVersion.getName());
+		boolean result = oldVersionF.renameTo(newVersionF);
+
+		return result;
 	}
 
 	// setter

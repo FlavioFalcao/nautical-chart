@@ -8,6 +8,9 @@ $page.setTitle("$version")
 #end
 </ul>
 
+#set($updateVersionUrl = "$app1Link.setTarget('updateVersion').addQueryData('project', $project).addQueryData('version', $version)")
+<h1><a href="$updateVersionUrl">修改版本</a></h1>
+
 #set($addIssueUrl = "$app1Link.setTarget('addIssue').addQueryData('project', $project).addQueryData('version', $version)")
 <h1><a href="$addIssueUrl">新增需求</a></h1>
 
