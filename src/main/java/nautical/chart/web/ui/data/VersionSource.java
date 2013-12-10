@@ -5,6 +5,7 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 
+import nautical.chart.web.ui.model.Project;
 import nautical.chart.web.ui.model.Version;
 import nautical.chart.web.ui.utils.FileHelper;
 
@@ -84,6 +85,17 @@ public class VersionSource {
 		} else {
 			return true;
 		}
+	}
+
+	/**
+	 * 更新指定项目
+	 */
+	public boolean updateProject(Project oldProject, Project newProject) {
+		File oldProjectF = new File(projectSource.getDataDir() + File.separator + oldProject.getName());
+		File newProjectF = new File(projectSource.getDataDir() + File.separator + newProject.getName());
+		boolean result = oldProjectF.renameTo(newProjectF);
+
+		return result;
 	}
 
 	// setter

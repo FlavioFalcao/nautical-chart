@@ -94,6 +94,9 @@ public class IssueSource {
 		}
 	}
 
+	/**
+	 * 更新指定版本
+	 */
 	public boolean updateVersion(Version oldVersion, Version newVersion) {
 		File oldVersionF = versionSource.getVersion(oldVersion.getProject(), oldVersion.getName());
 		File newVersionF = new File(oldVersionF.getParent() + File.separator + newVersion.getName());

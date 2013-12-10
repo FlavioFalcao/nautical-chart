@@ -1,0 +1,13 @@
+$page.setTitle("UPDATE VERSION")
+
+<h1>$app1Link</h1>
+<form action="$app1Link" method="post">
+    $csrfToken.hiddenField
+    <input type="hidden" name="action" value="VersionAction"/>
+    <input type="hidden" name="project" value="$project"/>
+    <input type="hidden" name="oldVersion" value="$version"/>
+
+    <h3>名称:</h3>
+    <input type="text" name="newVersion" value="$version" />
+    <input type="submit" name="event_submit_do_update"/>
+</form>
