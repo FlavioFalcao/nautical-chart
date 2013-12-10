@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import nautical.chart.web.ui.data.ProjectSource;
 import nautical.chart.web.ui.data.VersionSource;
 import nautical.chart.web.ui.model.Project;
-import nautical.chart.web.ui.model.Version;
 
 import com.alibaba.citrus.turbine.Navigator;
 import com.alibaba.citrus.turbine.dataresolver.FormGroup;
