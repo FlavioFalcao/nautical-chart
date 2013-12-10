@@ -51,14 +51,18 @@ public class IssueAction {
 		oldIssue.setVersion(version);
 
 		newIssue.setType(oldIssue.getType());
-		Status s = Status.valueOf(status);
+		Status s = Status.valueOf(status); // TODO: Status是枚举，单例；一处setTime改变，其余getTime也变
 		s.setTime(System.currentTimeMillis());
 		List<Status> statusList = oldIssue.getStatus();
-		statusList.add(s);
+		if (statusList.get(statusList.size() - 1) != s) {
+		    statusList.add(s);
+		}
 		newIssue.setStatus(statusList);
 		newIssue.setProject(project);
 		newIssue.setVersion(version);
+
 		boolean result = contentSource.updateContent(oldIssue, newIssue);
+
 		nav.redirectTo("app1Link").withTarget("version").withParameter("project", project).withParameter("version", version);
 	}
 }

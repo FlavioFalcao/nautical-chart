@@ -22,5 +22,6 @@ public class UpdateIssue {
 
 		Issue issue = contentSource.getContent(project, version, issueName);
 		context.put("content", issue);
+		context.put("lastStatus", issue.getStatus().get(issue.getStatus().size() - 1).name());
     }
 }
