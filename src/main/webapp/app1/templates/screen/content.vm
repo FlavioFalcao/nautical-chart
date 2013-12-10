@@ -10,6 +10,9 @@ $page.setTitle("$issue")
   <h1>$issueContent.name() $issueContent.getTime()</h1>
 #end
 
+#set($updateIssueUrl = "$app1Link.setTarget('updateIssue').addQueryData('project', $project).addQueryData('version', $version).addQueryData('issue', $issue)")
+<h1><a href="$updateIssueUrl">修改需求</a></h1>
+
 <form action="$app1Link" method="post">
     $csrfToken.hiddenField
     <input type="hidden" name="action" value="IssueAction"/>

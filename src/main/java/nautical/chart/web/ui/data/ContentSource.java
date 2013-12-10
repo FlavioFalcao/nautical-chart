@@ -1,9 +1,11 @@
 package nautical.chart.web.ui.data;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class ContentSource {
 		for (File tmpIssue : issues) {
 			if (tmpIssue.getName().equalsIgnoreCase(issueName)) {
 				issueFile = tmpIssue;
+				break;
 			}
 		}
 
@@ -66,7 +69,51 @@ public class ContentSource {
 		}
 	}
 
-	
+	public boolean updateContent(Issue oldIssue, Issue newIssue) {
+		List<File> issues = issueSource.listIssues(oldIssue.getProject(), oldIssue.getVersion());
+
+		File issueFile = null;
+		for (File tmpIssue : issues) {
+			if (tmpIssue.getName().equalsIgnoreCase(oldIssue.getName())) {
+				issueFile = tmpIssue;
+				break;
+			}
+		}
+
+		if (issueFile == null) {
+			return false;
+		} else {
+			boolean result = true;
+			BufferedWriter writer = null;
+
+			try {
+				writer = new BufferedWriter(new FileWriter(issueFile));
+				writer.write(newIssue.getDescription() + "\n");
+				writer.write(newIssue.getType().name() + "\n");
+				writer.write(newIssue.getOriginator() + "\n");
+				writer.write(newIssue.getOwner() + "\n");
+				String status = Issue.status2String(newIssue.getStatus());
+				writer.write(status + "\n");
+			} catch (Exception e) {
+				return false;
+			} finally {
+				if (writer != null) {
+					try {
+						writer.close();
+					} catch (IOException e) {
+						// TODO
+					}
+				}
+			}
+
+			if (!oldIssue.getName().equals(newIssue.getName())) {
+				File distFile = new File(issueFile.getParent() + File.separator + newIssue.getName());
+			    result = issueFile.renameTo(distFile);
+			}
+
+			return result;
+		}
+	}
 
 	// setter
 	public void setIssueSource(IssueSource issueSource) {

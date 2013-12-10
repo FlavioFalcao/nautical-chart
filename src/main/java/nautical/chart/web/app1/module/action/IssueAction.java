@@ -1,7 +1,10 @@
 package nautical.chart.web.app1.module.action;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import nautical.chart.web.ui.data.ContentSource;
 import nautical.chart.web.ui.data.IssueSource;
 import nautical.chart.web.ui.data.Status;
 import nautical.chart.web.ui.model.Issue;
@@ -19,6 +22,8 @@ import com.alibaba.citrus.turbine.dataresolver.Param;
 public class IssueAction {
 	@Autowired
 	private IssueSource issueSource;
+	@Autowired
+	private ContentSource contentSource;
 
 	public void doAdd(@Param("project") String project, @Param("version") String version, @FormGroup("issue") Issue issue, Navigator nav) {
 		issue.setType(Type.REQUIREMENT);
@@ -37,6 +42,23 @@ public class IssueAction {
 		oldIssue.setProject(project);
 		oldIssue.setVersion(version);
 		boolean result = issueSource.delIssue(oldIssue);
+		nav.redirectTo("app1Link").withTarget("version").withParameter("project", project).withParameter("version", version);
+	}
+
+	public void doUpdate(@Param("project") String project, @Param("version") String version, @Param("issue") String issueName, @Param("status") String status, @FormGroup("issue") Issue newIssue, Navigator nav) {
+		Issue oldIssue = contentSource.getContent(project, version, issueName);
+		oldIssue.setProject(project);
+		oldIssue.setVersion(version);
+
+		newIssue.setType(oldIssue.getType());
+		Status s = Status.valueOf(status);
+		s.setTime(System.currentTimeMillis());
+		List<Status> statusList = oldIssue.getStatus();
+		statusList.add(s);
+		newIssue.setStatus(statusList);
+		newIssue.setProject(project);
+		newIssue.setVersion(version);
+		boolean result = contentSource.updateContent(oldIssue, newIssue);
 		nav.redirectTo("app1Link").withTarget("version").withParameter("project", project).withParameter("version", version);
 	}
 }

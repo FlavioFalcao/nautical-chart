@@ -1,0 +1,29 @@
+$page.setTitle("UPDATE ISSUE")
+
+<h1>$app1Link</h1>
+<form action="$app1Link" method="post">
+    $csrfToken.hiddenField
+    <input type="hidden" name="action" value="IssueAction"/>
+    <input type="hidden" name="project" value="$project"/>
+    <input type="hidden" name="version" value="$version"/>
+    <input type="hidden" name="issue" value="$issue"/>
+
+    #set ($group = $form.issue.defaultInstance)
+
+    <p>
+        <h3>名称:</h3>
+        <input type="text" name="$group.name.key" value="$!content.getName()" />
+        <h3>描述:</h3>
+        <input type="text" name="$group.description.key" value="$!content.getDescription()"/>
+        <h3>类型:</h3>
+        <input type="text" name="type" value="$!content.getType()" readonly="readonly" />
+        <h3>发起人:</h3>
+        <input type="text" name="$group.originator.key" value="$!content.getOriginator()"/>
+        <h3>负责人:</h3>
+        <input type="text" name="$group.owner.key" value="$!content.getOwner()"/>
+        <h3>状态:</h3>
+        <input type="text" name="status" value="$!content.getStatus()"/>
+        <input type="submit" name="event_submit_do_update"/>
+    </p>
+
+</form>
