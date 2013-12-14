@@ -1,21 +1,16 @@
 $page.setTitle("ADD PROJECT")
 
-<h1>$app1Link</h1>
+<h1>填写项目名称</h1>
+
 <form action="$app1Link" method="post">
     $csrfToken.hiddenField
     <input type="hidden" name="action" value="ProjectAction"/>
 
     #set ($group = $form.project.defaultInstance)
-
-    <p>Hello, what is the project's name?</p>
-
     #if (!$group.name.valid)
         <p>$group.name.message</p>
     #end
 
-    <p>
-        <input type="text" name="$group.name.key" value="$!group.name.value"/>
-        <input type="submit" name="event_submit_do_add"/>
-    </p>
-
+    <input type="text" name="$group.name.key" value="$!group.name.value"/>
+    <p><input type="submit" name="event_submit_do_add" value="提交" /></p>
 </form>

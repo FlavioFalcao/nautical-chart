@@ -1,6 +1,7 @@
 $page.setTitle("ADD ISSUE")
 
-<h1>$app1Link</h1>
+<h1>填写需求内容</h1>
+
 <form action="$app1Link" method="post">
     $csrfToken.hiddenField
     <input type="hidden" name="action" value="IssueAction"/>
@@ -8,23 +9,28 @@ $page.setTitle("ADD ISSUE")
     <input type="hidden" name="version" value="$version"/>
 
     #set ($group = $form.issue.defaultInstance)
-
-    <p>Hello, what is the issue?</p>
-
     #if (!$group.name.valid)
         <p>$group.name.message</p>
     #end
 
-    <p>
-        <h3>名称:</h3>
-        <input type="text" name="$group.name.key" value="$!group.name.value"/>
-        <h3>描述:</h3>
-        <input type="text" name="$group.description.key" value="$!group.description.value"/>
-        <h3>发起人:</h3>
-        <input type="text" name="$group.originator.key" value="$!group.originator.value"/>
-        <h3>负责人:</h3>
-        <input type="text" name="$group.owner.key" value="$!group.owner.value"/>
-        <input type="submit" name="event_submit_do_add"/>
-    </p>
+    <table>
+        <tr>
+            <td><h3>名称:</h3></td>
+            <td><h3><input type="text" name="$group.name.key" value="$!group.name.value"/></h3></td>
+        </tr>
+        <tr>
+            <td><h3>描述:</h3></td>
+            <td><h3><input type="text" name="$group.description.key" value="$!group.description.value"/></h3></td>
+        </tr>
+        <tr>
+            <td><h3>发起人:</h3></td>
+            <td><h3><input type="text" name="$group.originator.key" value="$!group.originator.value"/></h3></td>
+        </tr>
+        <tr>
+            <td><h3>负责人:</h3></td>
+            <td><h3><input type="text" name="$group.owner.key" value="$!group.owner.value"/></h3></td>
+        </tr>
+    </table>
+    <input type="submit" name="event_submit_do_add" value="提交" />
 
 </form>

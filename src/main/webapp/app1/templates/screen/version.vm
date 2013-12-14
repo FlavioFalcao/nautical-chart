@@ -1,18 +1,18 @@
 $page.setTitle("$version")
 
-<h1>$app1Link</h1>
+<h1>需求列表</h1>
+
 <ul>
 #foreach ($issue in $issues)
   #set($url = "$app1Link.setTarget('content').addQueryData('project', $project).addQueryData('version', $version).addQueryData('issue', $issue.getName())")
-  <li><a href="$url">$issue.getName()</a></li>
+  <li><h3><a href="$url">$issue.getName()</a></h3></li>
 #end
 </ul>
 
-#set($updateVersionUrl = "$app1Link.setTarget('updateVersion').addQueryData('project', $project).addQueryData('version', $version)")
-<h1><a href="$updateVersionUrl">修改版本</a></h1>
-
 #set($addIssueUrl = "$app1Link.setTarget('addIssue').addQueryData('project', $project).addQueryData('version', $version)")
-<h1><a href="$addIssueUrl">新增需求</a></h1>
+<a href="$addIssueUrl"><button>新增需求</button></a>
+#set($updateVersionUrl = "$app1Link.setTarget('updateVersion').addQueryData('project', $project).addQueryData('version', $version)")
+<a href="$updateVersionUrl"><button>修改版本</button></a>
 
 <form action="$app1Link" method="post">
     $csrfToken.hiddenField
@@ -20,5 +20,5 @@ $page.setTitle("$version")
     <input type="hidden" name="project" value="$project"/>
     <input type="hidden" name="version" value="$version"/>
 
-    <input type="submit" name="event_submit_do_del" value="删除" />
+    <input type="submit" name="event_submit_do_del" value="删除版本" />
 </form>

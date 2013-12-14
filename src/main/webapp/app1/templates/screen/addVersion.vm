@@ -1,6 +1,7 @@
 $page.setTitle("ADD VERSION")
 
-<h1>$app1Link</h1>
+<h1>填写版本名称</h1>
+
 <form action="$app1Link" method="post">
     $csrfToken.hiddenField
     <input type="hidden" name="action" value="VersionAction"/>

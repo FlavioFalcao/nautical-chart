@@ -23,14 +23,14 @@ public class ProjectAction {
 
     public void doAdd(@FormGroup("project") Project project, Navigator nav) {
     	boolean result = projectSource.addProject(project);
-        nav.redirectTo("app1Link").withTarget("index1").withParameter("name", String.valueOf(result));
+        nav.redirectTo("app1Link").withTarget("index").withParameter("name", String.valueOf(result));
     }
 
     public void doDel(@Param("project") String project, Navigator nav) {
     	Project oldProject = new Project();
     	oldProject.setName(project);
     	boolean result = projectSource.delProject(oldProject);
-        nav.redirectTo("app1Link").withTarget("index1").withParameter("name", String.valueOf(true));
+        nav.redirectTo("app1Link").withTarget("index").withParameter("name", String.valueOf(true));
     }
 
 	public void doUpdate(@Param("oldProject") String oldProjectName, @Param("newProject") String newProjectName, Navigator nav) {
