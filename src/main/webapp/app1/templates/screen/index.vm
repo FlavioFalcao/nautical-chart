@@ -9,5 +9,7 @@ $page.setTitle("Nautical Chart")
 #end
 </ul>
 
-#set($addProjectUrl = "$app1Link.setTarget('addproject')")
-<a href="$addProjectUrl"><button>新增项目</button></a>
+<div>
+    #set($addProjectUrl = "$app1Link.setTarget('addproject')")
+    <a href="$addProjectUrl">新增项目</a>
+</div>
