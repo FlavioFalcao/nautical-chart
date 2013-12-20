@@ -1,12 +1,16 @@
 $page.setTitle("UPDATE PROJECT")
 
-<h1>$app1Link</h1>
+<div id="header">Nautical Chart</div>
+
 <form action="$app1Link" method="post">
     $csrfToken.hiddenField
     <input type="hidden" name="action" value="ProjectAction"/>
     <input type="hidden" name="oldProject" value="$project"/>
 
-    <h3>名称:</h3>
-    <input type="text" name="newProject" value="$project" />
-    <input type="submit" name="event_submit_do_update"/>
+    <div id="center"><input type="text" name="newProject" value="$project" /></div>
+
+    <div id="footer">
+        <a href="$app1Link.setTarget("project").addQueryData('name', $project)">Back</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="event_submit_do_update" value="Update" />
+    </div>
 </form>

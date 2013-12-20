@@ -1,8 +1,9 @@
 package nautical.chart.web.ui.model;
 
 import static org.junit.Assert.*;
+
 import java.util.List;
-import nautical.chart.web.ui.data.Status;
+
 import org.junit.Test;
 
 /**

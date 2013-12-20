@@ -1,17 +1,17 @@
 $page.setTitle("$issue")
 
-<h1>$app1Link</h1>
-<h1>$content.getName()</h1>
-<h1>$content.getDescription()</h1>
-<h1>$content.getType().name()</h1>
-<h1>$content.getOriginator()</h1>
-<h1>$content.getOwner()</h1>
-#foreach ($issueContent in $content.getStatus())
-  <h1>$issueContent.name() $issueContent.getTime()</h1>
-#end
+<div id="header">Nautical Chart</div>
 
-#set($updateIssueUrl = "$app1Link.setTarget('updateIssue').addQueryData('project', $project).addQueryData('version', $version).addQueryData('issue', $issue)")
-<h1><a href="$updateIssueUrl">修改需求</a></h1>
+<div id="center">
+    <p>$content.getName()</p>
+    <p>$content.getDescription()</p>
+    <p>$content.getType().name()</p>
+    <p>$content.getOriginator()</p>
+    <p>$content.getOwner()</p>
+    #foreach ($issueContent in $content.getStatus())
+        <p>$issueContent.name() $issueContent.getTime()</p>
+    #end
+</div>
 
 <form action="$app1Link" method="post">
     $csrfToken.hiddenField
@@ -20,5 +20,12 @@ $page.setTitle("$issue")
     <input type="hidden" name="version" value="$version"/>
     <input type="hidden" name="issue" value="$issue" />
 
-    <input type="submit" name="event_submit_do_del" value="删除" />
+    <div id="footer">
+        <a href="$app1Link.setTarget("version").addQueryData('project', $project).addQueryData('version', $version)">Back</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="event_submit_do_del" value="Delete" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        #set($updateIssueUrl = "$app1Link.setTarget('updateIssue').addQueryData('project', $project).addQueryData('version', $version).addQueryData('issue', $issue)")
+        <a href="$updateIssueUrl">Update</a>
+    </div>
 </form>

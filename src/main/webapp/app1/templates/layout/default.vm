@@ -1,16 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-    <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
-#showHead ("My Simple Webx Application")
-</head>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
+        #showHead ("My Simple Webx Application")
+    </head>
 
-<body #bodyAttributes ()>
+    <body #bodyAttributes ()>
 
-$screen_placeholder
+        $screen_placeholder
 
+<!--
 <hr/>
 <p>[<a href="$app1Link.setTarget("index")">Home</a>] [<a href="$app1Link">Dev Home</a>]</p>
+-->
 
-</body>
+    </body>
 </html>

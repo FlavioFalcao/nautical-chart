@@ -1,15 +1,17 @@
-$page.setTitle("Nautical Chart")
+$page.setTitle("NAUTICAL CHART")
 
-<h1>项目列表</h1>
+<div id="header">Nautical Chart</div>
 
-<ul>
-#foreach ($project in $projects)
-  #set($url = "$app1Link.setTarget('project').addQueryData('name', $project.getName())")
-  <li><h3><a href="$url">$project.getName()</a></h3></li>
-#end
-</ul>
+<div id="center">
+    #foreach ($project in $projects)
+    <p>
+        #set($url = "$app1Link.setTarget('project').addQueryData('name', $project.getName())")
+        <a href="$url">$project.getName()</a>
+    </p>
+    #end
+</div>
 
-<div>
+<div id="footer">
     #set($addProjectUrl = "$app1Link.setTarget('addproject')")
-    <a href="$addProjectUrl">新增项目</a>
+    <a href="$addProjectUrl">Add Project</a>
 </div>

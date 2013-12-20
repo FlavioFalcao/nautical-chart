@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import nautical.chart.web.ui.data.ContentSource;
 import nautical.chart.web.ui.data.IssueSource;
-import nautical.chart.web.ui.data.Status;
 import nautical.chart.web.ui.model.Issue;
+import nautical.chart.web.ui.model.Status;
 import nautical.chart.web.ui.model.Type;
 
 import com.alibaba.citrus.turbine.Navigator;

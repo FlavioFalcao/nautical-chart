@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 import nautical.chart.web.ui.model.Issue;
+import nautical.chart.web.ui.model.Status;
 import nautical.chart.web.ui.model.Type;
 
 /**

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import nautical.chart.web.ui.data.Status;
 import nautical.chart.web.ui.utils.Transformer;
 
 /**

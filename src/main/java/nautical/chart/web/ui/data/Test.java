@@ -2,6 +2,8 @@ package nautical.chart.web.ui.data;
 
 import java.util.Date;
 
+import nautical.chart.web.ui.model.Status;
+
 public class Test {
 
 	public static void main(String args[]) throws InterruptedException {

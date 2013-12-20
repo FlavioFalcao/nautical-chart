@@ -1,0 +1,92 @@
+div {
+    border-radius: 5px;
+}
+
+#header {
+    height: 50px;
+    color: #F38630;
+    font-family: Monospace;
+    font-size: 36px;
+    font-weight: 900;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    clear: both;
+}
+
+#center {
+    font-family: Monospace;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    clear: both;
+}
+
+#footer {
+    height: 50px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    clear: both;
+}
+
+p {
+    color: #C8D087;
+}
+
+a {
+    color: #C8D087;
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+#footer a {
+    color: #A7DFD8;
+    font-family: Monospace;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+select {
+	height: 30px;
+	width: 200px;
+    color: #FFFFFF;
+	background-color: #C8D087;	
+    font-family: Monospace;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 5px;
+	border-style: none;
+	outline:none;
+}
+
+input {
+    border-radius: 5px;
+	border-style: none;
+	outline:none;
+}
+
+input[type=text] {
+	height: 30px;
+	width: 200px;
+    color: #FFFFFF;
+	background-color: #C8D087;
+    font-family: Monospace;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+input[type=submit] {
+    color: #A7DFD8;
+    background-color: #FFFFFF;
+    font-family: Monospace;
+    font-size: 18px;
+    font-weight: 900;
+}

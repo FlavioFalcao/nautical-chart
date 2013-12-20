@@ -1,6 +1,6 @@
 $page.setTitle("ADD VERSION")
 
-<h1>填写版本名称</h1>
+<div id="header">Nautical Chart</div>
 
 <form action="$app1Link" method="post">
     $csrfToken.hiddenField
@@ -9,15 +9,12 @@ $page.setTitle("ADD VERSION")
 
     #set ($group = $form.version.defaultInstance)
 
-    <p>Hello, what is the version's name?</p>
+    <div id="center"><input type="text" name="$group.name.key" value="version's name" /></div>
 
-    #if (!$group.name.valid)
-        <p>$group.name.message</p>
-    #end
-
-    <p>
-        <input type="text" name="$group.name.key" value="$!group.name.value"/>
-        <input type="submit" name="event_submit_do_add"/>
-    </p>
+    <div id="footer">
+        <a href="$app1Link.setTarget("project").addQueryData('name', $project)">Back</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="event_submit_do_add" value="Add" />
+    </div>
 
 </form>

@@ -1,4 +1,4 @@
-package nautical.chart.web.ui.data;
+package nautical.chart.web.ui.model;
 
 /**
  * issue状态
