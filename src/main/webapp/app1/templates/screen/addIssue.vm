@@ -2,7 +2,7 @@ $page.setTitle("ADD ISSUE")
 
 <div id="header">Nautical Chart</div>
 
-<form action="$app1Link" method="post">
+<form action="$app1Link.setTarget("index.htm")" method="post">
     $csrfToken.hiddenField
     <input type="hidden" name="action" value="IssueAction"/>
     <input type="hidden" name="project" value="$project"/>

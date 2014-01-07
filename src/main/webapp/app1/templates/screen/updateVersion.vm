@@ -2,7 +2,7 @@ $page.setTitle("UPDATE VERSION")
 
 <div id="header">Nautical Chart</div>
 
-<form action="$app1Link" method="post">
+<form action="$app1Link.setTarget("index.htm")" method="post">
     $csrfToken.hiddenField
     <input type="hidden" name="action" value="VersionAction"/>
     <input type="hidden" name="project" value="$project"/>
