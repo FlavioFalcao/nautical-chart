@@ -2,6 +2,7 @@
 <html>
     <head>
         <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
+        <script type="text/javascript" src="js/nc.js" charset="utf-8"></script>
         #showHead ("My Simple Webx Application")
     </head>
 

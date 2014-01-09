@@ -18,7 +18,7 @@ div {
     font-family: Monospace;
     font-size: 24px;
     font-weight: 600;
-    text-align: center;
+    text-align: left; // center;
     margin-top: 50px;
     margin-bottom: 50px;
     clear: both;
@@ -90,3 +90,10 @@ input[type=submit] {
     font-size: 18px;
     font-weight: 900;
 }
+
+#TOC { border: solid black 1px; margin: 10px; padding: 10px; }
+.TOCEntry {font-family: sans-serif; }
+.TOCEntry a { text-decoration: none; }
+.TOCLevel1 { font-size: 16pt; font-weight: bold; }
+.TOCLevel2 { font-size: 12pt; margin-left: .5in; }
+.TOCSectNum:after { content: ": "; }
