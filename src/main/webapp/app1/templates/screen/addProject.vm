@@ -7,7 +7,10 @@ $page.setTitle("ADD PROJECT")
     <input type="hidden" name="action" value="ProjectAction"/>
     #set ($group = $form.project.defaultInstance)
 
-    <div id="center"><input type="text" name="$group.name.key" value="project's name" /></div>
+    <div id="center">
+        项目名称:<input type="text" name="$group.name.key" value="input here" />
+        项目所有者:<input type="text" name="$group.owner.key" value="input here" />
+    </div>
 
     <div id="footer">
         <a href="$app1Link.setTarget("index")">Back</a>

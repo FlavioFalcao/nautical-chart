@@ -18,21 +18,21 @@
         </property>
     </bean>
        
-    <bean id="projectSource" class="nautical.chart.web.ui.data.ProjectSource" init-method="init">
+    <bean id="projectSource" class="nautical.chart.web.ui.datasource.ProjectSource" init-method="init">
         <property name="location">
-            <value>${data.source}</value>
+            <value>${data.location}</value>
         </property>
     </bean>
 
-    <bean id="versionSource" class="nautical.chart.web.ui.data.VersionSource" init-method="init">
+    <bean id="versionSource" class="nautical.chart.web.ui.datasource.VersionSource"><!--  init-method="init"> -->
         <property name="projectSource" ref="projectSource" />
     </bean>
 
-    <bean id="issueSource" class="nautical.chart.web.ui.data.IssueSource">
+    <bean id="issueSource" class="nautical.chart.web.ui.datasource.IssueSource">
         <property name="versionSource" ref="versionSource" />
     </bean>
 
-    <bean id="contentSource" class="nautical.chart.web.ui.data.ContentSource">
+    <bean id="contentSource" class="nautical.chart.web.ui.datasource.ContentSource">
         <property name="issueSource" ref="issueSource" />
     </bean>
 

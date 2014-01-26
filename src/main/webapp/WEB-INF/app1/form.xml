@@ -40,6 +40,18 @@
         </group>
         <!--
           - ===============================================
+          - setting form
+          - ===============================================
+         -->
+        <group name="setting" extends="csrfCheck">
+            <field name="location" displayName="数据存储目录">
+                <fm-validators:required-validator>
+                    <message>必须填写数据存储目录</message>
+                </fm-validators:required-validator>
+            </field>
+        </group>
+        <!--
+          - ===============================================
           - project form
           - ===============================================
          -->
@@ -47,6 +59,11 @@
             <field name="name" displayName="项目名字">
                 <fm-validators:required-validator>
                     <message>必须填写项目名字</message>
+                </fm-validators:required-validator>
+            </field>
+            <field name="owner" displayName="所有者名字">
+                <fm-validators:required-validator>
+                    <message>必须填写所有者名字</message>
                 </fm-validators:required-validator>
             </field>
         </group>

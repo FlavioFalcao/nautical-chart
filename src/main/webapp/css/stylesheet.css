@@ -15,10 +15,11 @@ div {
 }
 
 #center {
+    color: #C8D087;
     font-family: Monospace;
     font-size: 24px;
     font-weight: 600;
-    text-align: left; // center;
+    text-align: center;
     margin-top: 50px;
     margin-bottom: 50px;
     clear: both;
@@ -43,6 +44,14 @@ a {
 
 a:hover {
     font-weight: bold;
+}
+
+#center table {
+    margin:auto;
+}
+
+#center table td {
+    padding:7px 30px 7px 30px;
 }
 
 #footer a {
@@ -91,9 +100,11 @@ input[type=submit] {
     font-weight: 900;
 }
 
-#TOC { border: solid black 1px; margin: 10px; padding: 10px; }
-.TOCEntry {font-family: sans-serif; }
-.TOCEntry a { text-decoration: none; }
-.TOCLevel1 { font-size: 16pt; font-weight: bold; }
-.TOCLevel2 { font-size: 12pt; margin-left: .5in; }
-.TOCSectNum:after { content: ": "; }
+#panel {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #0050D0;
+    background: #96E555;
+    cursor: pointer;
+}

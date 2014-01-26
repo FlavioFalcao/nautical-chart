@@ -1,7 +1,7 @@
 package nautical.chart.web.app1.module.action;
 
-import nautical.chart.web.ui.data.IssueSource;
-import nautical.chart.web.ui.data.VersionSource;
+import nautical.chart.web.ui.datasource.IssueSource;
+import nautical.chart.web.ui.datasource.VersionSource;
 import nautical.chart.web.ui.model.Version;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package nautical.chart.web.ui.module.screen;
 
 import javax.servlet.http.HttpServletRequest;
 
-import nautical.chart.web.ui.data.ContentSource;
+import nautical.chart.web.ui.datasource.ContentSource;
 import nautical.chart.web.ui.model.Issue;
 
 import org.springframework.beans.factory.annotation.Autowired;

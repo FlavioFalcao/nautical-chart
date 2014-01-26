@@ -3,15 +3,22 @@ $page.setTitle("NAUTICAL CHART")
 <div id="header">Nautical Chart</div>
 
 <div id="center">
-    #foreach ($project in $projects)
-    <p>
-        #set($url = "$app1Link.setTarget('project').addQueryData('name', $project.getName())")
-        <a href="$url">$project.getName()</a>
-    </p>
-    #end
+    <table>
+        #foreach ($project in $projects)
+        <tr>
+            <td>
+                #set($projectName = $project.getName() + "_" + $project.getOwner() + "_" + $project.getBornTime())
+                #set($url = "$app1Link.setTarget('project').addQueryData('name', $projectName)")
+                <a href="$url">$project.getName()</a>
+            </td>
+            <td>$project.getOwner()</td>
+            <td>$project.getBornTime()</td>
+        </tr>
+        #end
+    </table>
 </div>
 
 <div id="footer">
-    #set($addProjectUrl = "$app1Link.setTarget('addproject')")
+    #set($addProjectUrl = "$app1Link.setTarget('addProject')")
     <a href="$addProjectUrl">Add Project</a>
 </div>

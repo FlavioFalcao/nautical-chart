@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import nautical.chart.web.ui.data.IssueSource;
+import nautical.chart.web.ui.datasource.IssueSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import nautical.chart.web.ui.data.ProjectSource;
+import nautical.chart.web.ui.datasource.ProjectSource;
 
 import com.alibaba.citrus.turbine.Context;
 
