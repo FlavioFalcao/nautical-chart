@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import nautical.chart.web.ui.datasource.ContentSource;
 import nautical.chart.web.ui.datasource.IssueSource;
 import nautical.chart.web.ui.model.Issue;
-import nautical.chart.web.ui.model.Status;
+import nautical.chart.web.ui.model.State;
 import nautical.chart.web.ui.model.Type;
 
 import com.alibaba.citrus.turbine.Navigator;
@@ -27,8 +27,8 @@ public class IssueAction {
 
 	public void doAdd(@Param("project") String project, @Param("version") String version, @FormGroup("issue") Issue issue, Navigator nav) {
 		issue.setType(Type.REQUIREMENT);
-		Status status = Status.TODO;
-		status.setTime(System.currentTimeMillis());
+		State status = State.TODO;
+//		status.setTime(System.currentTimeMillis());
 		issue.addStatus(status);
 		issue.setProject(project);
 		issue.setVersion(version);
@@ -51,9 +51,9 @@ public class IssueAction {
 		oldIssue.setVersion(version);
 
 		newIssue.setType(oldIssue.getType());
-		Status s = Status.valueOf(status); // TODO: Status是枚举，单例；一处setTime改变，其余getTime也变
-		s.setTime(System.currentTimeMillis());
-		List<Status> statusList = oldIssue.getStatus();
+		State s = State.valueOf(status); // TODO: Status是枚举，单例；一处setTime改变，其余getTime也变
+//		s.setTime(System.currentTimeMillis());
+		List<State> statusList = oldIssue.getStatus();
 		if (statusList.get(statusList.size() - 1) != s) {
 		    statusList.add(s);
 		}

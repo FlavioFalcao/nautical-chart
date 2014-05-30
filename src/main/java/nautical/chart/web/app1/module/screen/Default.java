@@ -22,7 +22,7 @@ public class Default {
         List<File> projects = projectSource.listProjects();
         List<nautical.chart.web.ui.model.Project> viewProject = new ArrayList<nautical.chart.web.ui.model.Project>();
         for (File project : projects) {
-            viewProject.add(new nautical.chart.web.ui.model.Project(project.getName()));
+//            viewProject.add(new nautical.chart.web.ui.model.Project(project.getName()));
         }
 
         context.put("projects", viewProject);

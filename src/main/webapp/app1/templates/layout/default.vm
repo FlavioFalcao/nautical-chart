@@ -3,6 +3,7 @@
     <head>
         <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
         <script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+        <!-- <script type="text/javascript" src="js/angular.js"></script> -->
         <script type="text/javascript" src="js/nc.js"></script>
         #showHead ("My Simple Webx Application")
     </head>

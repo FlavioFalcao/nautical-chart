@@ -6,6 +6,17 @@ package nautical.chart.web.ui.model;
  * @author Cheng Feng 2013-11-17 22:58
  */
 public class Version {
+    // constructor
+    public Version() {
+        name = null;
+        project = null;
+    }
+
+    public Version(String name, String project) {
+        this.name = name;
+        this.project = project;
+    }
+
 	// setter & getter
 	public String getName() {
 		return name;

@@ -1,0 +1,48 @@
+$page.setTitle("NAUTICAL CHART")
+
+<style type="text/css">
+    .pop-box {  
+        height:50%;
+        width:50%;
+        z-index: 9999; /*这个数值要足够大，才能够显示在最上层*/  
+        display: none;   
+        position: absolute;   
+        background: #FFF;   
+    }
+
+    .mask {  
+        opacity: 0.95; 
+        color:#CCCCCC;
+        background-color:#CCCCCC;
+        position:absolute;
+        top:0px;
+        left:0px;
+        filter: Alpha(Opacity=60);
+    }
+</style>
+
+<div id="projects"></div>
+
+<div id="versions"></div>
+
+<div id="issues"></div>
+
+<div id='newproject' class="pop-box">
+    Project: <input type="text" id="name"><br />
+    Owner: <input type="text" id="owner"><br />
+    Description: <input type="text" id="description"><br />
+    Document: <input type="text" id="document"><br />
+    Born: <input type="text" id="born"><br />
+    State: <input type="text" id="state"><br />
+    <input type="submit" id="projectsubmit" value="Submit" />
+</div>
+
+<div id='newversion' class="pop-box">
+    Version Name: <input type="text" id="versionname">
+    <input type="submit" id="versionsubmit" value="Submit" />
+</div>
+
+<div id='newissue' class="pop-box">
+    Issue Name: <input type="text" id="issuename">
+    <input type="submit" id="issuesubmit" value="Submit" />
+</div>

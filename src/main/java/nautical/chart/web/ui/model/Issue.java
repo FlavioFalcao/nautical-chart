@@ -13,20 +13,30 @@ import nautical.chart.web.ui.utils.Transformer;
  * @author Cheng Feng 2013-11-17 22:59:30
  */
 public class Issue {
-	public void addStatus(Status status) {
+    // constructor
+    public Issue() {
+        // NOTHING TO DO.
+    }
+
+    public Issue(String name, String version) {
+        this.name = name;
+        this.version = version;
+    }
+
+	public void addStatus(State status) {
 		this.status.add(status);
 	}
 
-	public static List<Status> string2Status(String content) {
-		List<Status> result = new ArrayList<Status>();
+	public static List<State> string2Status(String content) {
+		List<State> result = new ArrayList<State>();
 
 		String tmps[] = content.trim().split(":");
 		for (String tmp : tmps) {
 			String timeAndStatus[] = tmp.split("-");
 			if (timeAndStatus.length == 2) {
-				Status tmpStatus = Status.valueOf(timeAndStatus[1]);
+				State tmpStatus = State.valueOf(timeAndStatus[1]);
 				long time = Transformer.stringDate2Long(timeAndStatus[0]);
-				tmpStatus.setTime(time);
+//				tmpStatus.setTime(time);
 				result.add(tmpStatus);
 			}
 		}
@@ -34,13 +44,13 @@ public class Issue {
 		return result;
 	}
 
-	public static String status2String(List<Status> status) {
+	public static String status2String(List<State> status) {
 		StringBuilder sBuilder = new StringBuilder();
 
-		for (Status s : status) {
-			String prefix = DATA_FORMAT.format(new Date(s.getTime()));
+		for (State s : status) {
+//			String prefix = DATA_FORMAT.format(new Date(s.getTime()));
 			String suffix = s.name();
-			sBuilder.append(":").append(prefix).append("-").append(suffix);
+//			sBuilder.append(":").append(prefix).append("-").append(suffix);
 			
 		}
 
@@ -88,11 +98,11 @@ public class Issue {
 		this.owner = owner;
 	}
 
-	public List<Status> getStatus() {
+	public List<State> getStatus() {
 		return status;
 	}
 
-	public void setStatus(List<Status> status) {
+	public void setStatus(List<State> status) {
 		this.status = status;
 	}
 
@@ -119,7 +129,7 @@ public class Issue {
 	private Type type;
 	private String originator;
 	private String owner;
-	private List<Status> status = new ArrayList<Status>();
+	private List<State> status = new ArrayList<State>();
 	private String project;
 	private String version;
 }

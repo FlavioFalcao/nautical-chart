@@ -11,43 +11,42 @@ import java.util.Date;
 public class Project {
 
     // constructor
-    public Project(){
-        name = "DEFAULT";
-        owner = "DEFAULT";
-        bornTime = SDF.format(new Date());
+    private Project(){
     }
 
-    // constructor
-    public Project(String fileName){
-        String contents[] = fileName.split(NAME_SEPARATOR);
-        name = contents[0];
-        owner = contents[1];
-        bornTime = contents[2];
+    public static Project who(String owner) {
+        Project result = new Project();
+        result.owner = owner;
+
+        return result;
     }
 
-    // setter & getter
+    public Project create(String name) {
+        this.name = name;
+        this.bornTime = SDF.format(new Date());
+        return this;
+    }
+
+    public Project document(String document) {
+        this.document = document;
+        return this;
+    }
+
+    // getter
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public String getDocument() {
+        return document;
     }
 
     public String getBornTime() {
         return bornTime;
-    }
-
-    public void setBornTime(String bornTime) {
-        this.bornTime = bornTime;
     }
 
     // attributes
@@ -55,5 +54,6 @@ public class Project {
     public static final SimpleDateFormat SDF            = new SimpleDateFormat("yyyyMMddHHmmss");
     private String                       name;
     private String                       owner;
+    private String                       document;
     private String                       bornTime;
 }

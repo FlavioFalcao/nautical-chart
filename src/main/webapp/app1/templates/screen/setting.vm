@@ -1,0 +1,17 @@
+$page.setTitle("SETTING")
+
+<div id="header">Nautical Chart</div>
+
+<form action="$app1Link.setTarget("index.htm")" method="post">
+    $csrfToken.hiddenField
+    <input type="hidden" name="action" value="SettingAction"/>
+    #set ($group = $form.setting.defaultInstance)
+
+    <div id="center">
+        <input type="text" name="$group.location.key" value="input here" title="data location"/>
+    </div>
+
+    <div id="footer">
+        <input type="submit" name="event_submit_do_add" value="Add" />
+    </div>
+</form>
