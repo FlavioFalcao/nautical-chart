@@ -38,6 +38,9 @@ public class Ajax {
                 result.add(projectDir.getName());
             }
             out.print(JSON.toJSONString(result));
+        } else if (PROJECT.equals(type)) {
+            Project project = projectSource.getProject(request.getParameter("name"));
+            out.print(JSON.toJSONString(project));
         } else if (VERSIONS.equals(type)) {
             List<nautical.chart.web.ui.model.Version> list = new ArrayList<nautical.chart.web.ui.model.Version>();
             nautical.chart.web.ui.model.Version v1 = new nautical.chart.web.ui.model.Version("v1", "p1");
@@ -72,6 +75,18 @@ public class Ajax {
                 result.add(projectDir.getName());
             }
             out.print(JSON.toJSONString(result));
+        } else if (DEL_PROJECT.equals(type)) {
+            Project oldProject = extractProject(request);
+            boolean delResult = projectSource.delProject(oldProject);
+
+            // TODO: LOG
+
+            List<String> result = new ArrayList<String>();
+            List<File> projectDirs = projectSource.listProjects();
+            for (File projectDir : projectDirs) {
+                result.add(projectDir.getName());
+            }
+            out.print(JSON.toJSONString(result));
         }
     }
 
@@ -80,7 +95,7 @@ public class Ajax {
         String owner = request.getParameter(OWNER);
         String description = request.getParameter(DESCRIPTION);
         String document = request.getParameter(DOCUMENT);
-//        String born = request.getParameter(BORN);
+        // String born = request.getParameter(BORN);
         String born = Constants.SDF.format(new Date());
 
         return Project.who(owner).when(born).create(name).descript(description).document(document).state(State.TODO);
@@ -88,9 +103,11 @@ public class Ajax {
 
     // attributes
     private static final String PROJECTS    = "projects";
+    private static final String PROJECT     = "project";
     private static final String VERSIONS    = "versions";
     private static final String ISSUES      = "issues";
     private static final String ADD_PROJECT = "addProject";
+    private static final String DEL_PROJECT = "delProject";
     private static final String NAME        = "name";
     private static final String OWNER       = "owner";
     private static final String DESCRIPTION = "description";

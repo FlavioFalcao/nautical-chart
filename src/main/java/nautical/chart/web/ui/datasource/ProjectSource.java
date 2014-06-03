@@ -1,6 +1,9 @@
 package nautical.chart.web.ui.datasource;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,6 +11,7 @@ import java.util.List;
 
 import nautical.chart.web.nc.Constants;
 import nautical.chart.web.ui.model.Project;
+import nautical.chart.web.ui.model.State;
 import nautical.chart.web.ui.utils.FileHelper;
 
 /**
@@ -104,6 +108,33 @@ public class ProjectSource {
             }
         } else {
             return false;
+        }
+    }
+
+    public Project getProject(String name) {
+        BufferedReader reader = null;
+        try {
+            File manifest = new File(location + name + File.separator + Constants.MANIFEST);
+            reader = new BufferedReader(new FileReader(manifest));
+            String owner[] = reader.readLine().split(":");
+            String description[] = reader.readLine().split(":");
+            String document[] = reader.readLine().split(":");
+            String born[] = reader.readLine().split(":");
+            String rawStates[] = reader.readLine().split(":");
+            String state[] = rawStates[1].split("_");
+
+            return Project.who(owner[1]).when(born[1]).create(name).descript(description[1]).document(document[0]).state(State.valueOf(state[0]));
+        } catch (Throwable t) {
+            // TODO: LOG
+            return null;
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    // DO NOTHING
+                }
+            }
         }
     }
 
