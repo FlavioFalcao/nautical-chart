@@ -28,12 +28,12 @@ $page.setTitle("NAUTICAL CHART")
 <div id="issues"></div>
 
 <div id='newproject' class="pop-box">
-    Project: <input type="text" id="name"><br />
-    Owner: <input type="text" id="owner"><br />
-    Description: <input type="text" id="description"><br />
-    Document: <input type="text" id="document"><br />
-    Born: <input type="text" id="born"><br />
-    State: <input type="text" id="state"><br />
+    Project: <input type="text" id="pName"><br />
+    Owner: <input type="text" id="pOwner"><br />
+    Description: <input type="text" id="pDescription"><br />
+    Document: <input type="text" id="pDocument"><br />
+    Born: <input type="text" id="pBorn"><br />
+    State: <input type="text" id="pState"><br />
     <input type="submit" id="projectsubmit" value="Submit" />
 </div>
 

@@ -7,7 +7,19 @@ package nautical.chart.web.ui.model;
  */
 public enum State {
 
-	TODO,	// 未开始
-	DOING,	// 进行中
-	DONE;	// 完成
+	TODO("TODO"),	// 未开始
+	DOING("DOING"),	// 进行中
+	DONE("DONE");	// 完成
+
+	State(String state) {
+	    this.state = state;
+	}
+
+	@Override
+	public String toString() {
+	    return state;
+	}
+
+	// attributes
+	private String state;
 }

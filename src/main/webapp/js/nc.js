@@ -1,8 +1,57 @@
 $(function() {
 	// 初始化页面
-	getProjects();
+	communicate({"type" : "projects"}, showProjects);
 	// 初始化提交按钮
 	initSumbits();
+
+	// 与服务端通讯
+	function communicate(data, callback) {
+		removeMask();
+		hideDiv();
+
+		$.get("ajax.do", data, function(result, status) {
+			callback(result);
+		}, "json");
+	}
+
+	// 提交新增project函数
+	function commitProject() {
+		// 清理现场
+		emptyIssues();
+		emptyVersions();
+		emptyProjects();
+
+		var data = {
+			"type" : "addProject",
+			"name" : $("#pName").val(),
+			"owner" : $("#pOwner").val(),
+			"description" : $("#pDescription").val(),
+			"document" : $("#pDocument").val(),
+			"born" : $("#pBorn").val(),
+			"state" : $("#pState").val()
+		};
+
+		communicate(data, showProjects);
+		cleanNewProject();
+	}
+
+	// 从服务端获取projects
+	function getProjects() {
+		var data = {"type" : "projects"};
+		communicate(data, showProjects);
+	}
+
+	// 从服务端获取versions
+	function getVersions() {
+		var data = {"type" : "versions"};
+		communicate(data, showVersions);
+	}
+
+	// 从服务端获取issues
+	function getIssues() {
+		var data = {"type" : "issues"};
+		communicate(data, showIssues);
+	}
 
 	// projects li的click函数
 	function projectClick() {
@@ -14,20 +63,16 @@ $(function() {
 
 	// 新增project函数
 	function addProject() {
-		// 清理现场
-		emptyIssues();
-		emptyVersions();
-		emptyProjects();
-
 		popupMask();
 		popDiv('newproject');
-		getProjects();
 	}
 
 	// 显示project详细
 	function showProjectDetail() {
 		var detail = $("<span></span>").text(" detail");
-		detail.click(function() {alert("TEST");});
+		detail.click(function() {
+			alert("TEST");
+		});
 		$(this).append(detail);
 	}
 
@@ -53,7 +98,7 @@ $(function() {
 		popDiv('newversion');
 		getVersions();
 	}
-	
+
 	// 显示version详细
 	function showVersionDetail() {
 		var detail = $("<span></span>").text(" detail");
@@ -82,15 +127,6 @@ $(function() {
 		$("#projects").empty();
 	}
 
-	// 从服务端获取projects
-	function getProjects() {
-		$.get("ajax.do", {
-			"type" : "projects"
-		}, function(projects, status) {
-			showProjects(projects);
-		}, "json");
-	}
-
 	// 显示projects
 	function showProjects(projects) {
 		for (var i = 0; i < projects.length; i++) {
@@ -114,15 +150,6 @@ $(function() {
 		$("#versions").empty();
 	}
 
-	// 从服务端获取versions
-	function getVersions() {
-		$.get("ajax.do", {
-			"type" : "versions"
-		}, function(versions, status) {
-			showVersions(versions);
-		}, "json");
-	}
-
 	// 显示versions
 	function showVersions(versions) {
 		for (var i = 0; i < versions.length; i++) {
@@ -140,15 +167,6 @@ $(function() {
 	// 清空issues
 	function emptyIssues() {
 		$("#issues").empty();
-	}
-
-	// 从服务端获取issues
-	function getIssues() {
-		$.get("ajax.do", {
-			"type" : "issues"
-		}, function(issues, status) {
-			showIssues(issues);
-		}, "json");
 	}
 
 	// 显示issues
@@ -220,7 +238,7 @@ $(function() {
 
 	function initSumbits() {
 		$("#projectsubmit").click(function() {
-			alert("projectsubmit");
+			commitProject();
 		});
 		$("#versionsubmit").click(function() {
 			alert("versionsubmit");
@@ -228,6 +246,15 @@ $(function() {
 		$("#issuesubmit").click(function() {
 			alert("issuesubmit");
 		});
+	}
+
+	function cleanNewProject() {
+		$("#pName").val("");
+		$("#pOwner").val("");
+		$("#pDescription").val("");
+		$("#pDocument").val("");
+		$("#pBorn").val("");
+		$("#pState").val("");
 	}
 
 	// $("input[type=text]").hover(function() {
