@@ -35,6 +35,7 @@ $page.setTitle("NAUTICAL CHART")
     Born: <input type="text" id="pBorn"><br />
     State: <input type="text" id="pState"><br />
     <input type="submit" id="delProject" value="delete" /><br />
+    <input type="submit" id="updateProject" value="update" /><br />
     <input type="submit" id="projectsubmit" value="Submit" />
 </div>
 

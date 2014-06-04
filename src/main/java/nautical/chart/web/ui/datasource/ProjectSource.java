@@ -2,7 +2,6 @@ package nautical.chart.web.ui.datasource;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -111,6 +110,38 @@ public class ProjectSource {
         }
     }
 
+    public boolean updateProject(Project newProject) {
+        String newProjectManifestName = location + newProject.getName() + File.separator + Constants.MANIFEST;
+        File manifest = new File(newProjectManifestName);
+
+        if (manifest.exists() && manifest.isFile()) {
+            FileWriter writer = null;
+            try {
+                writer = new FileWriter(manifest);
+                writer.write("Owner:" + newProject.getOwner() + "\n");
+                writer.write("Description:" + newProject.getDescription() + "\n");
+                writer.write("Document:" + newProject.getDocument() + "\n");
+                writer.write("Born:" + newProject.getBorn() + "\n");
+                writer.write("State:" + newProject.getState() + "_" + newProject.getBorn());
+
+                return true;
+            } catch (Throwable t) {
+                // TODO: LOG
+                return false;
+            } finally {
+                if (writer != null) {
+                    try {
+                        writer.close();
+                    } catch (IOException e) {
+                        // DO NOTHING
+                    }
+                }
+            }
+        } else {
+            return false;
+        }
+    }
+
     public Project getProject(String name) {
         BufferedReader reader = null;
         try {
@@ -123,7 +154,7 @@ public class ProjectSource {
             String rawStates[] = reader.readLine().split(":");
             String state[] = rawStates[1].split("_");
 
-            return Project.who(owner[1]).when(born[1]).create(name).descript(description[1]).document(document[0]).state(State.valueOf(state[0]));
+            return Project.who(owner[1]).when(born[1]).create(name).descript(description[1]).document(document[1]).state(State.valueOf(state[0]));
         } catch (Throwable t) {
             // TODO: LOG
             return null;

@@ -87,6 +87,18 @@ public class Ajax {
                 result.add(projectDir.getName());
             }
             out.print(JSON.toJSONString(result));
+        } else if (UPDATE_PROJECT.equals(type)) {
+            Project newProject = extractProject(request);
+            boolean addResult = projectSource.updateProject(newProject);
+
+            // TODO: LOG
+
+            List<String> result = new ArrayList<String>();
+            List<File> projectDirs = projectSource.listProjects();
+            for (File projectDir : projectDirs) {
+                result.add(projectDir.getName());
+            }
+            out.print(JSON.toJSONString(result));
         }
     }
 
@@ -102,17 +114,18 @@ public class Ajax {
     }
 
     // attributes
-    private static final String PROJECTS    = "projects";
-    private static final String PROJECT     = "project";
-    private static final String VERSIONS    = "versions";
-    private static final String ISSUES      = "issues";
-    private static final String ADD_PROJECT = "addProject";
-    private static final String DEL_PROJECT = "delProject";
-    private static final String NAME        = "name";
-    private static final String OWNER       = "owner";
-    private static final String DESCRIPTION = "description";
-    private static final String DOCUMENT    = "document";
-    private static final String BORN        = "born";
+    private static final String PROJECTS       = "projects";
+    private static final String PROJECT        = "project";
+    private static final String VERSIONS       = "versions";
+    private static final String ISSUES         = "issues";
+    private static final String ADD_PROJECT    = "addProject";
+    private static final String UPDATE_PROJECT = "updateProject";
+    private static final String DEL_PROJECT    = "delProject";
+    private static final String NAME           = "name";
+    private static final String OWNER          = "owner";
+    private static final String DESCRIPTION    = "description";
+    private static final String DOCUMENT       = "document";
+    private static final String BORN           = "born";
     @Autowired
     private HttpServletRequest  request;
     @Autowired

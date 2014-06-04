@@ -14,15 +14,15 @@ $(function() {
 		}, "json");
 	}
 
-	// 提交新增project函数
-	function commitProject() {
+	// 新增、修改、删除project函数
+	function modifyProject(type) {
 		// 清理现场
 		emptyIssues();
 		emptyVersions();
 		emptyProjects();
 
 		var data = {
-			"type" : "addProject",
+			"type" : type,
 			"name" : $("#pName").val(),
 			"owner" : $("#pOwner").val(),
 			"description" : $("#pDescription").val(),
@@ -32,27 +32,6 @@ $(function() {
 		};
 
 		communicate(data, showProjects);
-		cleanProject();
-	}
-
-	function deleteProject() {
-		// 清理现场
-		emptyIssues();
-		emptyVersions();
-		emptyProjects();
-
-		var data = {
-			"type" : "delProject",
-			"name" : $("#pName").val(),
-			"owner" : $("#pOwner").val(),
-			"description" : $("#pDescription").val(),
-			"document" : $("#pDocument").val(),
-			"born" : $("#pBorn").val(),
-			"state" : $("#pState").val()
-		};
-
-		communicate(data, showProjects);
-		cleanProject();
 	}
 
 	// 从服务端获取issues
@@ -70,7 +49,7 @@ $(function() {
 	}
 
 	// 新增project函数
-	function addProject() {
+	function addProject(project) {
 		popupMask();
 		popDiv('project');
 	}
@@ -157,8 +136,7 @@ $(function() {
 		for (var i = 0; i < projects.length; i++) {
 			var content = $("<span></span>").text(projects[i]);
 			content.click(projectClick);
-			var newNode = $("<div></div>");
-			newNode.attr("id", projects[i]);
+			var newNode = $("<div></div>").attr("id", projects[i]);
 			newNode.mouseenter(showProjectDetail);
 			newNode.mouseleave(hideProjectDetail);
 			newNode.append(content);
@@ -167,7 +145,7 @@ $(function() {
 
 		// 增加Add Project
 		var newNode = $("<div></div>").text("Add Project");
-		newNode.bind("click", addProject);
+		newNode.click(addProject);
 		$("#projects").append(newNode);
 	}
 
@@ -224,6 +202,7 @@ $(function() {
 
 	// 删除隐藏层
 	function removeMask() {
+		cleanProject();
 		$("#mask").remove();
 	}
 
@@ -235,7 +214,8 @@ $(function() {
 		var popupHeight = div_obj.height();
 		var popupWidth = div_obj.width();
 		div_obj.css({
-			"position" : "absolute"
+			"position" : "absolute",
+			"opacity" : "show"
 		}).animate({
 			left : windowWidth / 2 - popupWidth / 2,
 			top : windowHeight / 2 - popupHeight / 2,
@@ -264,10 +244,13 @@ $(function() {
 
 	function initSumbits() {
 		$("#projectsubmit").click(function() {
-			commitProject();
+			modifyProject("addProject");
 		});
 		$("#delProject").click(function() {
-			deleteProject();
+			modifyProject("delProject");
+		});
+		$("#updateProject").click(function() {
+			modifyProject("updateProject");
 		});
 		$("#versionsubmit").click(function() {
 			alert("versionsubmit");
